@@ -40,6 +40,9 @@ return require("packer").startup(function(use)
 	-- commenting with gc
 	use("numToStr/Comment.nvim")
 
+	-- comment for javascript
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
 
