@@ -97,6 +97,8 @@ return require("packer").startup(function(use)
 			ts_update()
 		end,
 	})
+	-- clear search highlighting after search
+	use("romainl/vim-cool")
 
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...

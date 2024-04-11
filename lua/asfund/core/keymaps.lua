@@ -18,9 +18,19 @@ keymap.set("n", "x", '"_x')
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
+-- cursor remain on jump
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- jump to start/end of line
 keymap.set("n", "0", "^")
 keymap.set("n", "-", "$")
+
+-- selected line movement
+keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
+keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
+keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move line up(v)
+keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move line down(v)
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
@@ -39,8 +49,11 @@ keymap.set("n", "<leader>-", "<C-x>") -- decrement
 keymap.set("n", "<C-BS>", 'vb"_da')
 keymap.set("i", "<C-BS>", "<C-w>")
 keymap.set("c", "<C-BS>", "<C-w>")
-keymap.set("i", "<C-H>", "<C-w>") -- using Ctrl+Backspace delete a word. ref:https://www.reddit.com/r/neovim/comments/prp8zw/using_ctrlbackspace_in_neovim/
+keymap.set("i", "<C-H>", "<C-w>")
 keymap.set("c", "<C-H>", "<C-w>")
+
+-- greatest remap ever ( preserve copy and pasted word )
+keymap.set("x", "<leader>p", '"_dP')
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -53,11 +66,6 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 keymap.set("n", "<leader>vs", ":source $MYVIMRC<CR>")
-
-keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
-keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
-keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
-keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
 --------------------
 -- Plugin Keybinds
