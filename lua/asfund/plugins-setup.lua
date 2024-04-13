@@ -85,6 +85,33 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
+	-- cmd line and notification
+	use("rcarriga/nvim-notify")
+
+	use({
+		"folke/noice.nvim",
+		event = "VimEnter",
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("noice").setup({
+				background_colour = "#000000",
+				views = {
+					cmdline_popup = {
+						filter_options = {},
+						win_options = {
+							-- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+						},
+					},
+				},
+			})
+		end,
+	})
+
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
@@ -106,6 +133,9 @@ return require("packer").startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+
+	-- vim games from Prime
+	use("ThePrimeagen/vim-be-good")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
