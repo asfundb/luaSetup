@@ -143,6 +143,7 @@ keymap.set("n", "<leader>gcheck", "<cmd>Git status<cr>") -- git status
 keymap.set("n", "<leader>ga", "<cmd>Git add .<cr>") -- stage all changes
 keymap.set("n", "<leader>grm", "<cmd>Git reset<cr>") -- git unstage all stages files
 keymap.set("n", "<leader>gcom", "<cmd>Git commit<cr>") -- git unstage all stages files
+keymap.set("n", "<leader>gspeed", "<cmd>Git push<cr>") -- git unstage all stages files
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
