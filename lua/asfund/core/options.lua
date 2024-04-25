@@ -42,6 +42,8 @@ opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
+--conceallevel
+opt.conceallevel = 1
 opt.scrolloff = 8
 
 opt.iskeyword:append("-")

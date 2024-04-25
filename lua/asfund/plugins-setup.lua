@@ -43,9 +43,19 @@ return require("packer").startup(function(use)
 	-- comment for javascript
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
+	-- multi line editing
+	use("mg979/vim-visual-multi")
+
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
 
+	-- harpoon
+	use("nvim-lua/plenary.nvim") -- don't forget to add this one if you don't have it yet!
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 	--icons
 	use("kyazdani42/nvim-web-devicons")
 
@@ -69,6 +79,8 @@ return require("packer").startup(function(use)
 
 	-- managing & installing lsp servers
 	use("williamboman/mason.nvim")
+	use("WhoIsSethDaniel/mason-tool-installer.nvim")
+
 	use("williamboman/mason-lspconfig.nvim")
 
 	-- configuring lsp servers
@@ -87,7 +99,7 @@ return require("packer").startup(function(use)
 
 	-- cmd line and notification
 	use("rcarriga/nvim-notify")
-
+	use("MunifTanjim/nui.nvim")
 	use({
 		"folke/noice.nvim",
 		event = "VimEnter",
@@ -99,14 +111,32 @@ return require("packer").startup(function(use)
 		},
 		config = function()
 			require("noice").setup({
-				background_colour = "#000000",
-				views = {
-					cmdline_popup = {
-						filter_options = {},
-						win_options = {
-							-- winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-						},
-					},
+				messages = {
+					-- NOTE: If you enable messages, then the cmdline is enabled automatically.
+					-- This is a current Neovim limitation.
+					enabled = true, -- enables the Noice messages UI
+					view = "notify", -- default view for messages
+					view_error = "notify", -- view for errors
+					view_warn = "notify", -- view for warnings
+					view_history = "messages", -- view for :messages
+					view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+				},
+				presets = {
+					bottom_search = false, -- use a classic bottom cmdline for search
+					command_palette = false, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = true, -- add a border to hover docs and signature help
+				},
+
+				-- background_colour = "#000000",
+				cmdline = {
+					enabled = true, -- enables the Noice cmdline UI
+					view = "cmdline_popup",
+				},
+				popupmenu = {
+					enabled = true, -- enables the Noice popupmenu UI
+					backend = "cmp", -- backend to use to show regular cmdline completions
 				},
 			})
 		end,
@@ -114,7 +144,10 @@ return require("packer").startup(function(use)
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use("stevearc/conform.nvim")
+	use("mfussenegger/nvim-lint")
 
 	-- treesitter configuration
 	use({
@@ -132,11 +165,50 @@ return require("packer").startup(function(use)
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration
+	use("tpope/vim-fugitive")
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
 	-- vim games from Prime
 	use("ThePrimeagen/vim-be-good")
 
+	-- Obsidian Plugin
+	use({
+		"epwalsh/obsidian.nvim",
+		tag = "*", -- recommended, use latest release instead of latest commit
+		requires = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+
+			-- see below for full list of optional dependencies 👇
+		},
+		config = function()
+			require("obsidian").setup({
+				workspaces = {
+					{
+						name = "Master",
+						path = "~/Documents/Notes/Master",
+					},
+				},
+
+				-- see below for full list of options 👇
+			})
+		end,
+	})
+
+	-- Pomodoro Timer
+	use({
+		"epwalsh/pomo.nvim",
+		tag = "*", -- Recommended, use latest release instead of latest commit
+		requires = {
+			-- Optional, but highly recommended if you want to use the "Default" timer
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("pomo").setup({
+				-- See below for full list of options 👇
+			})
+		end,
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then

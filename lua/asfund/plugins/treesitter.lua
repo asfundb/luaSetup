@@ -28,6 +28,12 @@ treesitter.setup({
 		"vim",
 		"dockerfile",
 		"gitignore",
+		"markdown",
+		"markdown_inline",
+		"vim",
+		"regex",
+		"lua",
+		"bash",
 	},
 
 	-- auto install above language parsers

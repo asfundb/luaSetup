@@ -42,6 +42,7 @@ cmp.setup({
 		{ name = "luasnip" }, -- snippets
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
+		{ name = "cmp-cmdline" },
 	}),
 	-- configure lspkind for vs-code like icons
 	formatting = {
@@ -50,4 +51,23 @@ cmp.setup({
 			ellipsis_char = "...",
 		}),
 	},
+})
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline({
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
+		{ name = "noice" },
+	}, {
+		{
+			name = "cmdline",
+			option = {},
+		},
+	}),
 })

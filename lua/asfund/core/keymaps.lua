@@ -5,8 +5,42 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end)
+vim.keymap.set("n", "<C-e>", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+vim.keymap.set("n", "<C-h>", function()
+	harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<C-t>", function()
+	harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<C-n>", function()
+	harpoon:list():select(3)
+end)
+vim.keymap.set("n", "<C-s>", function()
+	harpoon:list():select(4)
+end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-S-P>", function()
+	harpoon:list():prev()
+end)
+vim.keymap.set("n", "<C-S-N>", function()
+	harpoon:list():next()
+end)
+
 -- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>")
+keymap.set("i", "jj", "<ESC>")
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
@@ -68,6 +102,18 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 keymap.set("n", "<leader>vs", ":source $MYVIMRC<CR>")
 
 --------------------
+-- Autocommands
+----------------------
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+--------------------
 -- Plugin Keybinds
 ----------------------
 
@@ -89,6 +135,14 @@ keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git 
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+-- Gitsigns
+keymap.set("n", "<leader>glb", "<cmd>Gitsigns toggle_current_line_blame<cr>") -- Toggle git line blame
+-- Git Fugitive
+keymap.set("n", "<leader>gcheck", "<cmd>Git status<cr>") -- git status
+keymap.set("n", "<leader>ga", "<cmd>Git add .<cr>") -- stage all changes
+keymap.set("n", "<leader>grm", "<cmd>Git reset<cr>") -- git unstage all stages files
+keymap.set("n", "<leader>gcom", "<cmd>Git commit<cr>") -- git unstage all stages files
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary

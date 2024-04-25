@@ -11,8 +11,10 @@ vim.g.loaded_netrwPlugin = 1
 -- change color for arrows in tree to light blue
 vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
-vim.cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]])
-
+-- vim.cmd([[hi NvimTreeNormal guibg=NONE ctermbg=NONE]],
+vim.cmd("highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE guifg=#263243 guibg=NONE")
+vim.cmd("highlight EndOfBuffer  guifg=#101925")
+-- highlight EndOfBuffer guifg=bg
 -- configure nvim-tree
 nvimtree.setup({
 	-- change folder arrow icons
