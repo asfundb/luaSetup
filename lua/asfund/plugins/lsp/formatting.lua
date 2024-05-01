@@ -19,6 +19,7 @@ return {
 				graphql = { "prettier" },
 				lua = { "stylelua" },
 				python = { "isort", "black" },
+				liquid = { "theme-check" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

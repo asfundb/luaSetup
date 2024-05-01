@@ -14,6 +14,7 @@ return {
 			javascriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
 			python = { "pylint" },
+			-- liquid = { "shopify-theme-check" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_au_group("lint", { clear = true })

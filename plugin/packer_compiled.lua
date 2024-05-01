@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/asfund/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?/init.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/asfund/.cache/nvim/packer_hererocks/2.1.1710088188/lib/lua/5.1/?.so"
+local package_path_str = "/Users/asfund/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?/init.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?.lua;/Users/asfund/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/asfund/.cache/nvim/packer_hererocks/2.1.1713773202/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -114,6 +114,12 @@ _G.packer_plugins = {
     path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codeium.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcodeium\frequire\0" },
+    loaded = true,
+    path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/codeium.nvim",
+    url = "https://github.com/Exafunction/codeium.nvim"
+  },
   ["conform.nvim"] = {
     loaded = true,
     path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/conform.nvim",
@@ -133,6 +139,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -175,7 +186,7 @@ _G.packer_plugins = {
     url = "https://github.com/bluz71/vim-nightfly-colors"
   },
   ["noice.nvim"] = {
-    config = { "\27LJ\2\nš\3\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\14popupmenu\1\0\2\fbackend\bcmp\fenabled\2\fcmdline\1\0\2\tview\18cmdline_popup\fenabled\2\fpresets\1\0\5\20command_palette\1\18bottom_search\1\19lsp_doc_border\2\15inc_rename\1\26long_message_to_split\2\rmessages\1\0\4\fcmdline\0\rmessages\0\fpresets\0\14popupmenu\0\1\0\6\tview\vnotify\fenabled\2\16view_search\16virtualtext\17view_history\rmessages\14view_warn\vnotify\15view_error\vnotify\nsetup\nnoice\frequire\0" },
+    config = { "\27LJ\2\nš\3\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\14popupmenu\1\0\2\fbackend\bcmp\fenabled\2\fcmdline\1\0\2\tview\18cmdline_popup\fenabled\2\fpresets\1\0\5\15inc_rename\1\26long_message_to_split\2\20command_palette\1\18bottom_search\1\19lsp_doc_border\2\rmessages\1\0\4\fpresets\0\rmessages\0\fcmdline\0\14popupmenu\0\1\0\6\14view_warn\vnotify\15view_error\vnotify\tview\vnotify\fenabled\2\16view_search\16virtualtext\17view_history\rmessages\nsetup\nnoice\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -245,7 +256,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["obsidian.nvim"] = {
-    config = { "\27LJ\2\n‘\1\0\0\5\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0005\4\3\0>\4\1\3=\3\5\2B\0\2\1K\0\1\0\15workspaces\1\0\1\15workspaces\0\1\0\2\tpath\29~/Documents/Notes/Master\tname\vMaster\nsetup\robsidian\frequire\0" },
+    config = { "\27LJ\2\n‘\1\0\0\5\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0005\4\3\0>\4\1\3=\3\5\2B\0\2\1K\0\1\0\15workspaces\1\0\1\15workspaces\0\1\0\2\tname\vMaster\tpath\29~/Documents/Notes/Master\nsetup\robsidian\frequire\0" },
     loaded = true,
     path = "/Users/asfund/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
     url = "https://github.com/epwalsh/obsidian.nvim"
@@ -324,14 +335,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: obsidian.nvim
+time([[Config for obsidian.nvim]], true)
+try_loadstring("\27LJ\2\n‘\1\0\0\5\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0005\4\3\0>\4\1\3=\3\5\2B\0\2\1K\0\1\0\15workspaces\1\0\1\15workspaces\0\1\0\2\tname\vMaster\tpath\29~/Documents/Notes/Master\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
+time([[Config for obsidian.nvim]], false)
+-- Config for: codeium.nvim
+time([[Config for codeium.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcodeium\frequire\0", "config", "codeium.nvim")
+time([[Config for codeium.nvim]], false)
 -- Config for: pomo.nvim
 time([[Config for pomo.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\tpomo\frequire\0", "config", "pomo.nvim")
 time([[Config for pomo.nvim]], false)
--- Config for: obsidian.nvim
-time([[Config for obsidian.nvim]], true)
-try_loadstring("\27LJ\2\n‘\1\0\0\5\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0004\3\3\0005\4\3\0>\4\1\3=\3\5\2B\0\2\1K\0\1\0\15workspaces\1\0\1\15workspaces\0\1\0\2\tpath\29~/Documents/Notes/Master\tname\vMaster\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
-time([[Config for obsidian.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

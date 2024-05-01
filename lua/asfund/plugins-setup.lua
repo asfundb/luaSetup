@@ -195,6 +195,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- indentation markers
+	use("lukas-reineke/indent-blankline.nvim")
+
+	-- Codium ai
+	use({
+		"Exafunction/codeium.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	})
 	-- Pomodoro Timer
 	use({
 		"epwalsh/pomo.nvim",
