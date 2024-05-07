@@ -198,6 +198,12 @@ return require("packer").startup(function(use)
 	-- indentation markers
 	use("lukas-reineke/indent-blankline.nvim")
 
+	-- hardtime
+	use({ "m4xshen/hardtime.nvim", requires = {
+		"MunifTanjim/nui.nvim",
+		"nvim-lua/plenary.nvim",
+	} })
+
 	-- Codium ai
 	use({
 		"Exafunction/codeium.nvim",
