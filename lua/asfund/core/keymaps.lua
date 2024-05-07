@@ -149,3 +149,5 @@ keymap.set("n", "<leader>grm", "<cmd>Git reset<cr>") -- git unstage all stages f
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- test
